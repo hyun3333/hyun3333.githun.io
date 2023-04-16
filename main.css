@@ -1,0 +1,639 @@
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Hahmlet-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+/* input{
+    border: 0px solid #000000;
+    background: inherit;
+    outline-style: none;
+} */
+/* 기본설정 끝 */
+
+body{
+    background: #E9EBF0;
+    color: #ffffff;
+     font-family: 'Hahmlet-Regular';
+
+     /* 드래그 방지 */
+    webkit-user-select:none;
+    moz-user-select:none;
+    ms-user-select:none;
+    user-select:none
+}
+
+.wrapper{
+    background: url(./img/table.jpg);
+    background-size: cover;
+    background-position: center;
+    margin: 50px auto;
+    width: 800px;
+    height: 550px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* START start & end */
+#start, #end{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    /* display: none; */
+}
+#start img{
+    width: 560px;
+}
+#end img{
+    width: 220px;
+}
+#end #start-logo{
+    position: absolute;
+    left: 50%;
+    top: -10%;
+    transform: translateX(-50%);
+}
+
+#end #end-text{
+    margin: 110px 0 50px 0;
+    width: 500px;
+
+    text-align: center;
+    font-weight: 700;
+    font-size: 100px;
+}
+#end #end-score{
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+}
+#start #start-btn,
+#end #end-btn
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: fit-content;
+    padding: 7px 20px;
+    margin: 20px auto 0;
+    border: 4px ridge #E9EBF0;
+    border-radius: 15px;
+
+    font-family: 'TheJamsil5Bold';
+    font-weight: 700;
+    transition: 0.2s;
+}
+#start #start-btn:hover,
+#end #end-btn:hover{
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000000;
+    cursor: pointer;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+}
+#start.hide{
+    animation: hide-up 1s ease-in forwards;
+}
+#end{
+    animation: hide-down 1.5s ease-in 0.5s backwards;
+}
+#end.hide{
+    display: none;
+}
+@keyframes hide-up {
+    0%{
+        top: 50%;
+        display: block;
+    }
+    20%{
+        top: 60%;
+    }
+    100%{
+        top: -100%;
+        display: none;
+    }
+}
+@keyframes hide-down {
+    0%{
+        top: -100%;
+        display: none;
+    }
+    70%{
+        top: 60%;
+    }
+    100%{
+        
+        top: 50%;
+        display: block;
+    }
+}
+/* END start & end */
+
+
+.wrapper > #gameOn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0 1%;
+    justify-content: space-between;
+}
+.wrapper > #gameOn.hide{
+    opacity: 0;
+}
+
+
+/* START 셔플을 시작할까요? */
+article.blackJack {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    /* opacity: 0; */
+}
+article.blackJack #shuffle{
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 3px 20px 7px;
+    font-size: 40px;
+}
+article.blackJack #shuffleBtn{
+    position: absolute;
+    bottom: -120%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+article.blackJack #shuff-text{
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: -150px;
+    transform: translate(-50%, 0);
+
+    color: rgb(255, 0, 21);
+    font-weight: 500;
+    font-size: 16px;
+    text-shadow: 2px 2px 3px rgb(80, 80, 80);
+}
+
+article.blackJack #shuff-text.shake {
+    display: block;
+    animation: shake 0.7s linear alternate;
+}
+
+@keyframes shake {
+    0% {
+		transform: translateX(50%);
+	}
+	16% {
+		transform: translateX(-82.27%);
+        /* text-shadow: 3px 3px 0 red; */
+	}
+	28% {
+		transform: translateX(-36.88%);
+	}
+	44% {
+		transform: translateX(-54.63%);
+	}
+	59% {
+		transform: translateX(-48.36%);
+	}
+	73% {
+		transform: translateX(-50.58%);
+	}
+	88% {
+		transform: translateX(-49.8%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+/* END 셔플을 시작할까요? */
+
+
+
+
+
+
+
+/* START gameON setting */
+section#left{
+    width: 16%;
+    align-self: center;
+}
+section#middle{
+    width: 55%;
+}
+section#right{
+    width: 27%;
+    margin-right: 15px;
+}
+/* END gameON setting */
+
+
+
+/* START section#left 좌측 */
+section#left #gameOn-logo{
+    width: 130px;
+}
+section#left #gameOn-logo img{
+    width: 100%;
+    opacity: 0.8;
+}
+section#left h4{
+    text-align: center;
+    justify-content: flex-end;
+    padding-left: 10px;
+}
+/* END section#left */
+
+
+/* START section#right 배팅창 만들기 */
+section#right{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+section#right #betting.hide{
+    display: block;
+    position: absolute;
+    transition: 0.6s;
+    animation-fill-mode: cubic-bezier(0.12, 0, 0.39, 0);
+    margin-left: 400px;
+}
+section#right #betting .betting-text{
+    background-color: black;
+    padding: 14px 18px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    border: 4px solid #E9EBF0;
+    font-size: 13.5px;
+    font-weight: 100;
+
+    box-shadow: 5px 5px 0px rgb(179, 174, 171);
+    font-family: 'GongGothicMedium';
+}
+
+section#right #betting input:nth-of-type(1n){
+    width: 77%;
+    background-color: #dbdbdb;
+    border-radius: 7px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 8px auto 0px;
+    padding: 2.5px 2px 1.5px;
+
+    text-align: center;
+    font-size: 14px;
+    font-weight: 200;
+    text-align: center;
+    transition: 0.05s;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+
+    font-family: 'GongGothicMedium';
+}
+section#right #betting input:nth-last-of-type(5){
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+}
+section#right #betting input:nth-last-of-type(1){
+    letter-spacing: -0.01em;
+    font-weight: 500;
+    font-size: 15.px;
+}
+section#right #betting input:nth-of-type(1n):active{
+    background-color: white;
+    border: 2px solid gold;
+    color: black;
+    box-shadow: 0 0 10px white;
+}
+
+section#right #betting-text, /* 금액 표기 */
+section#right #pocket-text{ 
+    margin-top: 5px;
+    min-width: 130px;
+    width: fit-content;
+    font-size: 15px;
+    font-weight: 500;
+
+    background-color: black;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    border: 2px solid #E9EBF0;
+    box-shadow: 5px 5px 0px rgb(179, 174, 171);
+    text-shadow: 0 0 6px rgba(255, 0, 0, 1);
+}
+
+/* 금액+스코어 업 애니메이션 */
+section#right #addMoney,
+section#left #addScore{
+    display: none;
+    width: fit-content;
+    height: 20px;
+    line-height: 20px;
+    padding: 2px 5px;
+
+    position: absolute;
+    transform: translate(50%, 0);
+    top: 390px;
+    opacity: 1;
+    
+    font-size: 15px;
+    color: rgb(255, 187, 0);
+    text-shadow: 2px 2px 3px rgb(80, 80, 80);
+    border-radius: 50%;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    box-shadow: 3px 3px 6px rgba(53, 53, 53, 0.4);
+}
+section#left #addScore{
+    left: 60px;
+    top: 285px;
+}
+
+section#right #addMoney em,
+section#left #addMoney em{
+    font-weight: 800;
+}
+section#right #addMoney.win{
+    display: block;
+    animation: win 0.85s 
+    cubic-bezier(0.33, 1, 0.68, 1);
+}
+section#left #addScore.win{
+    display: block;
+    animation: winScore 0.85s 
+    cubic-bezier(0.33, 1, 0.68, 1);
+}
+@keyframes win {
+    0%{
+        top: 390px;
+        opacity: 0.2;
+    } 10%{
+        opacity: 0.8;
+    } 40%{
+        opacity: 0.8;
+    } 100%{
+        top: 370px;
+        opacity: 0;
+    }
+}
+@keyframes winScore {
+    0%{
+        top: 285px;
+        opacity: 0.2;
+    } 10%{
+        opacity: 0.8;
+    } 40%{
+        opacity: 0.8;
+    } 100%{
+        top: 265px;
+        opacity: 0;
+    }
+}
+
+/* END section#right */
+
+
+
+/* START section#middle 게임존 만들기 */
+section#middle .game-zone{
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+section#middle #card-sum{
+    display: none;
+    margin-top: 5px;
+}
+section#middle #card-sum.on{
+    display: block;
+    /*flex-flow: row nowrap;
+    justify-content: center;*/
+    cursor: pointer; 
+}
+section#middle #youCard-sum h3{
+    width: 75px;
+    height: 27px;
+    line-height: 27px;
+    border: 2px dotted #aaaaaa ;
+}
+section#middle #myCard-sum{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    /* align-content: center; */
+    margin-top: 5px;
+}
+section#middle div > h3{
+    width: 80px;
+    height: 30px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 30px;
+    background: rgba(0, 0, 0, 0.7);
+
+    box-shadow: 2px 2px 5px #000000;
+    border: 2px dotted #ffffff ;
+    border-style: dotted;
+    border-radius: 5px;
+    /* background: linear-gradient(to right, rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0.7), rgba(255, 0, 0, 0)); */
+}
+section#middle #myCard-sum div{
+    width: 53px;
+    height: 53px;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px #000000;
+    
+    position: relative;
+    bottom: 15px;
+    text-align: center;
+    line-height: 53px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #000000;
+
+    transition: 0.2s;
+}
+section#middle #myCard-sum #hitBtn{
+    background: url(./img/chip.png) no-repeat;
+    background-size: cover;
+    margin-right: 25px;
+}
+section#middle #myCard-sum #standBtn{
+    background: url(./img/poker-chip.png) no-repeat;
+    background-size: cover;
+    margin-left: 25px;
+}
+section#middle #myCard-sum div h2{
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: 0.1s;
+}
+section#middle #myCard-sum div:hover{
+    scale: 1.2;
+    cursor: pointer;
+}
+section#middle #myCard-sum div:hover h2{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #504343;
+    box-shadow: 2px 2px 5px #000000;
+    font-size: 14px;
+}
+/*////////////////////////////////////////////////*/
+
+section#middle .game-zone #dealer{
+    margin-top: 5px;
+    height: 35%;
+    width: 100%;
+}
+section#middle .game-zone #player{
+    margin-bottom: 5px;
+    height: 35%;
+    width: 100%;
+}
+
+section#middle .game-zone div ul{
+    position: relative;
+    margin: 0 auto;
+    
+    width: 75%;
+    height: 150px;
+    /* background-color: antiquewhite; */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* overflow: hidden; */
+}
+section#middle .game-zone div ul li{
+    position: absolute;
+
+    width: 90.75px;
+    height: 132px;
+    background-image: url(./img/1-40card/40.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    animation: player-card-up 
+    0.7s cubic-bezier(0.33, 1, 0.68, 1) 0.2s both;
+}
+section#middle .game-zone div ul#dealer-card li{
+    margin-top: 30px;
+    animation: dealer-card-up 0.7s cubic-bezier(0.33, 1, 0.68, 1) 0.2s both;
+}
+section#middle .game-zone div ul#player-card li:hover{
+     transform: translateY(-20%);
+}
+
+@keyframes player-card-up {
+    0%{
+        top: 150%;
+        margin-left: 200px;
+    } 100%{
+        top: 10%;
+    }
+}
+@keyframes dealer-card-up {
+    0%{
+        top: -120%;
+    } 100%{
+        top: 10%;
+    }
+}
+@keyframes player-card-down {
+    0%{
+        top: 10%;
+    } 100%{
+        top: 150%;
+    }
+}
+@keyframes dealer-card-down {
+    0%{
+        top: 10%;
+    } 100%{
+        top: -120%;
+    }
+}
+section#middle .game-zone div ul li:nth-child(2){
+    margin-left: 40px;
+    z-index: 1;
+}
+section#middle .game-zone div ul li:nth-child(3){
+    margin-left: 80px;
+    z-index: 2;
+}
+section#middle .game-zone div ul li:nth-child(4){
+    margin-left: 120px;
+    z-index: 3;
+}
+section#middle .game-zone div ul li:nth-child(5){
+    margin-left: 160px;
+    z-index: 4;
+}
+section#middle .game-zone div ul li:nth-child(6){
+    margin-left: 200px;
+    z-index: 5;
+}
+section#middle .game-zone div ul li:nth-child(7){
+    margin-left: 240px;
+    z-index: 6;
+}
+section#middle .game-zone div ul li:nth-child(8){
+    margin-left: 280px;
+    z-index: 7;
+}
+section#middle .game-zone div ul li:nth-child(9){
+    margin-left: 320px;
+    z-index: 8;
+}
+section#middle .game-zone div ul li:nth-child(10){
+    margin-left: 360px;
+    z-index: 9;
+}
+
+
+
+/* END section#middle 게임존 */
+
+
+
+
+
+
+
+
+
+

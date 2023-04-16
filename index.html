@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Jack</title>
+
+    <!-- reset.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+    <!-- 자바스크립트, CSS 불러오기. -->
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="./main.css">
+
+    <!-- 파비콘 -->
+    <link rel="icon" href="./img/favicon-16x16-red.png">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="start">
+            <div id="start-logo">
+                <img src="./img/Blackjack logo.png" alt="메인로고">
+            </div>
+            <div id="start-btn" class="">시작</div>
+        </div>
+
+
+        <!-- 게임 시작!!!!!!! -->
+        <div id="gameOn">
+            <section id="left">
+                <div id="gameOn-logo">
+                    <img src="./img/Blackjack logo.png" alt="메인로고">
+                </div>
+                <h4>Score: <em id="gameOn-score">0</em></h4>
+                <span id="addScore"><em>- 0</em></span>
+            </section> <!-- END left -->
+           
+
+            <article class="blackJack"> <!-- 셔플시작 -->
+                <h2>
+                    <em id="shuff-text">※배팅금액을 확인해주세요!!</em>
+                    <em id="shuffle">배팅을 진행해주세요</em>
+                    <input id="shuffleBtn" type="button" value="게임 시작!!">
+                </h2>
+            </article>
+
+            <section id="middle">
+                <!-- START game-zone -->
+                <div class="game-zone">
+                    <div id="dealer">
+                        <ul id="dealer-card">
+                        </ul>
+                    </div>
+                    <!-- 카드 합계 -->
+                    <div id="card-sum"> 
+                        <div id="youCard-sum"><h3>0</h3></div>
+                        <div id="myCard-sum">
+                            <div id="hitBtn"><h2>HIT</h2></div>
+                            <h3>0</h3>
+                            <div id="standBtn"><h2>STAND</h2></div>
+                        </div>
+                    </div>
+                    <div id="player">
+                        <ul id="player-card">
+                        </ul>
+                    </div>
+                </div> <!-- END game-zone -->
+                
+                <!-- Hit & Stand -->
+                <!-- <aside> 
+                </aside> -->
+            </section> <!-- END middle -->
+
+
+            <section id="right">
+                <!-- 배팅란 -->
+                <div id="betting"> 
+                    <!-- 시작 누르면 나타나게 하기 -->
+                    <div class="betting-text">
+                        <h2>- Betting -</h2>
+                        <div class="betting-btn">
+                            <input type="button" value="50">
+                            <input type="button" value="100">
+                            <input type="button" value="500">
+                            <input type="button" value="1000">
+                            <input type="button" value="All-in">
+                        </div>
+                    </div>
+                </div>
+                <!-- 배팅 금액 확인란 -->
+                <div id="betting-text">
+                    배팅 금액: $<span id="betting-text-money">0</span>
+                </div>
+                <div id="pocket-text">
+                    소지금: $<span id="pocket-text-money">500</span>
+                </div>
+                <span id="addMoney">+ <em>0</em></span>
+            </section> <!-- END right -->
+        </div>
+        <!-- 게임 끝 -->
+        
+
+
+        <div id="end" class="hide">
+            <div id="start-logo">
+                <img src="./img/Blackjack logo.png" alt="메인로고">
+            </div>
+            <div id="end-text">YOU DIE</div>
+            <div id="end-score">SCORE: <em id="last-score">0</em></div>
+            <div id="end-btn" class="main-btn">다시하기</div>
+        </div>
+
+    </div> <!-- END .wrapper -->
+
+</body>
+
+</html>
